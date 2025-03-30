@@ -13,7 +13,7 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# CORS caso queira liberar o front no futuro
+# CORS (libera para o Angular se quiser)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -22,40 +22,41 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# MongoDB setup
-username = "Juliokawahata"
-password = "Essasenhaehboa"
+# ===============================
+# MongoDB do Natan - Cluster Final
+# ===============================
+username = "natan22201"
+password = "wuCkCIyNLyISjnkN"
 password_encoded = urllib.parse.quote_plus(password)
 
-MONGO_URI = f"mongodb+srv://{username}:{password_encoded}@clustersuspeito.twhb.mongodb.net/?retryWrites=true&w=majority&appName=ClusterSuspeito"
+MONGO_URI = f"mongodb+srv://{username}:{password_encoded}@cluster0.didtx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 client = pymongo.MongoClient(MONGO_URI)
-db = client["animes"]
-collection = db["anime_collection"]
 
-# Função auxiliar pra carregar os dados do Mongo e transformar em DataFrame
+db = client["animes_final"]
+collection = db["anime_collection_final"]
+
+# Função auxiliar
 def carregar_dados():
-    data = list(collection.find({}, {"_id": 0}))  # remove o _id
+    data = list(collection.find({}, {"_id": 0}))  # Remove o _id
     return pd.DataFrame(data)
 
-# Endpoint base
+# ========== ENDPOINTS ==========
+
 @app.get("/")
 def home():
     return {"mensagem": "API de Animes está online!"}
 
-# Endpoint para listar todos os animes
 @app.get("/animes")
 def listar_animes(limit: Optional[int] = 10):
     df = carregar_dados()
     return df.head(limit).to_dict(orient="records")
 
-# Endpoint para filtrar por gênero
 @app.get("/animes/por-genero")
 def filtrar_por_genero(genero: str):
     df = carregar_dados()
     resultado = df[df["generos"].str.contains(genero, case=False, na=False)]
     return resultado.to_dict(orient="records")
 
-# Endpoint para estatísticas de notas
 @app.get("/animes/estatisticas")
 def estatisticas_notas():
     df = carregar_dados()
@@ -68,7 +69,6 @@ def estatisticas_notas():
         "mediana": float(estat.median())
     }
 
-# Endpoint para exportar todos os dados como JSON completo
 @app.get("/animes/exportar")
 def exportar_todos_os_dados():
     df = carregar_dados()

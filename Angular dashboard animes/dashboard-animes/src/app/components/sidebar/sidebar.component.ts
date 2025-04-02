@@ -22,7 +22,6 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
-  isCollapsed = false;
   items = [
     { label: 'Mais assistidos', icon: 'visibility', value: 'mais-assistidos' },
     { label: 'Notas mais altas', icon: 'star', value: 'notas-altas' },
@@ -31,8 +30,4 @@ export class SidebarComponent {
     { label: 'Classificação', icon: 'block', value: 'classificacao' },
     { label: 'Temporada', icon: 'calendar_today', value: 'temporada' }
   ];
-
-  toggleSidebar() {
-    this.isCollapsed = !this.isCollapsed;
-  }
 }

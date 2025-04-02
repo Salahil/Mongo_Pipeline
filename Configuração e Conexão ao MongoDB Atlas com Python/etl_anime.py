@@ -2,13 +2,11 @@
 import pandas as pd
 import pymongo
 import urllib.parse
-import certifi  # Importante para o SSL
-
 
 # ===============================
 # 1. Caminho do CSV atualizado
 # ===============================
-csv_path = r"C:\Users\Felipe Augusto\Documents\GitHub\Mongo_Pipeline\Configuração e Conexão ao MongoDB Atlas com Python\anime.csv"
+csv_path = r"C:\Users\sergy\OneDrive\Documentos\MeusProjetos\Mongo_Pipeline\Configuração e Conexão ao MongoDB Atlas com Python\anime.csv"
 df = pd.read_csv(csv_path)
 
 # ===============================
@@ -66,19 +64,6 @@ client = pymongo.MongoClient(MONGO_URI)
 
 db = client["animes_final"]
 collection = db["anime_collection_final"]
-
-# Teste de conexão
-try:
-    client.admin.command('ping')
-    print("✅ Conexão com MongoDB Atlas estabelecida com sucesso!")
-except Exception as e:
-    print(f"❌ Falha na conexão: {e}")
-    exit()
-
-# Acesso ao banco de dados e coleção
-db = client["animes_final"]
-collection = db["anime_collection_final"]
-
 
 # ===============================
 # 4. Inserir os dados

@@ -4,7 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-notas-altas',
   imports: [],
   templateUrl: './notas-altas.component.html',
-  standalone: true,
   styleUrl: './notas-altas.component.scss'
 })
 export class NotasAltasComponent {

@@ -1,1 +1,39 @@
-<p>distribuicao-genero works!</p>
+<div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between;">
+
+  <!-- Gráfico Donut - Distribuição de Animes por Gênero -->
+  <div style="flex: 1; min-width: 300px;">
+    <h3>Distribuição de Animes por Gênero</h3>
+    <apx-chart
+      [series]="donutSeries"
+      [labels]="donutLabels"
+      [chart]="donutChart"
+      [responsive]="donutResponsive"
+      type="donut">
+    </apx-chart>
+  </div>
+
+  <!-- Gráfico de Barras - Média de Membros por Gênero -->
+  <div style="flex: 1; min-width: 300px;">
+    <h3>Média de Membros por Gênero</h3>
+    <apx-chart
+      [series]="barSeries"
+      [chart]="barChart"
+      [xaxis]="barXAxis"
+      [title]="barTitle"
+      type="bar">
+    </apx-chart>
+  </div>
+
+</div>
+
+<!-- Gráfico de Linha - Popularidade Média por Gênero -->
+<div style="margin-top: 2rem;">
+  <h3>Popularidade Média por Gênero</h3>
+  <apx-chart
+    [series]="lineSeries"
+    [chart]="lineChart"
+    [xaxis]="lineXAxis"
+    [title]="lineTitle"
+    type="line">
+  </apx-chart>
+</div>

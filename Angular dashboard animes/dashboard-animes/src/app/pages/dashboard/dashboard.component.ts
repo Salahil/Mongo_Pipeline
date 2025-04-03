@@ -8,8 +8,6 @@ import {
 } from 'ng-apexcharts';
 
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
-import { MaisAssistidosComponent } from '../../components/charts/mais-assistidos/mais-assistidos.component';
-import { NotasAltasComponent } from '../../components/charts/notas-altas/notas-altas.component';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 
@@ -19,8 +17,6 @@ import { RouterOutlet } from '@angular/router';
   imports: [
     RouterOutlet,
     SidebarComponent,
-    MaisAssistidosComponent,
-    NotasAltasComponent,
     NgApexchartsModule,
     CommonModule
   ],
@@ -28,5 +24,5 @@ import { RouterOutlet } from '@angular/router';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-  
+
 }

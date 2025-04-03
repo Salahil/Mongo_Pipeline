@@ -33,7 +33,7 @@ export class MaisAssistidosComponent implements OnInit {
     data: []
   }];
 
-  
+
   chartColors: string[] = [
     '#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0',
     '#3F51B5', '#546E7A', '#D4526E', '#8D5B4C', '#F86624',

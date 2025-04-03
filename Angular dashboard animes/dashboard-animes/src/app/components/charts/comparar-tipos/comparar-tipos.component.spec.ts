@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GenerosComponent } from './generos.component';
+import { CompararTiposComponent } from './comparar-tipos.component';
 
-describe('GenerosComponent', () => {
-  let component: GenerosComponent;
-  let fixture: ComponentFixture<GenerosComponent>;
+describe('CompararTiposComponent', () => {
+  let component: CompararTiposComponent;
+  let fixture: ComponentFixture<CompararTiposComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [GenerosComponent]
+      imports: [CompararTiposComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(GenerosComponent);
+    fixture = TestBed.createComponent(CompararTiposComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

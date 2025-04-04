@@ -1,1 +1,11 @@
-<p>popularidade-tempo works!</p>
+<div *ngIf="series.length > 0">
+  <apx-chart
+    [series]="series"
+    [chart]="chart"
+    [title]="title"
+    [xaxis]="xaxis"
+    [yaxis]="yaxis"
+    [stroke]="stroke"
+    [dataLabels]="dataLabels">
+  </apx-chart>
+</div>

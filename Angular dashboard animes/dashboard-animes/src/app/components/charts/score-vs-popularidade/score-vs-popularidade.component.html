@@ -1,1 +1,21 @@
-<p>score-vs-popularidade works!</p>
+<div class="chart-container">
+  <apx-chart
+  [series]="scatterSeries"
+  [chart]="scatterChart"
+  [xaxis]="scatterXAxis"
+  [yaxis]="scatterYAxis"
+  [title]="scatterTitle"
+  [tooltip]="scatterTooltip">
+</apx-chart>
+</div>
+
+<div class="chart-container mt-5">
+  <apx-chart
+    [series]="bubbleSeries"
+    [chart]="bubbleChart"
+    [xaxis]="bubbleXAxis"
+    [yaxis]="bubbleYAxis"
+    [title]="bubbleTitle"
+    [tooltip]="bubbleTooltip">
+  </apx-chart>
+</div>

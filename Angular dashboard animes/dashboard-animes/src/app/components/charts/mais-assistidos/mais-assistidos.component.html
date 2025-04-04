@@ -12,44 +12,6 @@
       [title]="chartTitle"
     ></apx-chart>
   </div>
-
-  <!-- Linha com dois gráficos lado a lado -->
-  <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between;">
-    <!-- Gráfico Donut -->
-    <div style="flex: 1;">
-      <h3>Top 5 - Favoritos + Completos + Planeja Assistir</h3>
-      <apx-chart
-        [series]="donutSeries"
-        [labels]="donutLabels"
-        [chart]="donutChart"
-        [responsive]="donutResponsive"
-        type="donut"
-      ></apx-chart>
-    </div>
-
-    <!-- Gráfico de Linha -->
-    <div style="flex: 1;">
-      <h3>Popularidade dos Animes</h3>
-      <apx-chart
-        [series]="linhaSeries"
-        [chart]="linhaChart"
-        [xaxis]="linhaXAxis"
-        type="line"
-      ></apx-chart>
-    </div>
-  </div>
-
-  <!-- Gráfico horizontal de completos -->
-  <div>
-    <h3>Animes Mais Completados</h3>
-    <apx-chart
-      [series]="completosSeries"
-      [chart]="completosChart"
-      [xaxis]="completosXAxis"
-      [yaxis]="completosYAxis"
-      [colors]="['#00E396']"
-      type="bar"
-    ></apx-chart>
-  </div>
+  
 
 </div>

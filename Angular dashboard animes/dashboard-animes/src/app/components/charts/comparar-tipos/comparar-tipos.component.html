@@ -1,1 +1,17 @@
-<p>comparar-tipos works!</p>
+<div class="chart-container">
+  <apx-chart
+    [series]="barSeries"
+    [chart]="barChart"
+    [xaxis]="barXAxis"
+    [title]="barTitle"
+  ></apx-chart>
+</div>
+
+<div class="chart-container mt-5">
+  <apx-chart
+    [series]="radarSeries"
+    [chart]="radarChart"
+    [title]="radarTitle"
+    [labels]="getTiposLabels()"
+  ></apx-chart>
+</div>

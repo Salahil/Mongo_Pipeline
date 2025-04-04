@@ -76,13 +76,27 @@ def distribuicao_genero():
 @app.get("/animes/popularidade-tempo")
 def popularidade_tempo():
     df = carregar_dados()
+
+    # Remove valores "Unknown" na coluna 'temporada'
+    df = df[df["temporada"] != "Unknown"]
+
+    # Converte a coluna 'popularidade' para numérico
+    df["popularidade"] = pd.to_numeric(df["popularidade"], errors="coerce")
+
+    # Remove linhas com NaN após conversão ou ausência de dados
     df = df.dropna(subset=['temporada', 'popularidade'])
+
+    # Agrupamento para média por temporada
     agrupado = df.groupby("temporada")["popularidade"].mean().reset_index()
-    boxplot_data = df[['temporada', 'popularidade']].dropna()
+
+    # Dados para o boxplot
+    boxplot_data = df[['temporada', 'popularidade']]
+
     return {
         "popularidade_media_temporada": agrupado.to_dict(orient="records"),
         "distribuicao_boxplot": boxplot_data.to_dict(orient="records")
     }
+
 
 @app.get("/animes/correlacoes")
 def correlacoes():
@@ -106,13 +120,28 @@ def score_vs_popularidade():
 @app.get("/animes/comparar-tipos")
 def comparar_tipos():
     df = carregar_dados()
-    df = df.dropna(subset=['tipo'])
+
+    # Garante que as colunas estejam presentes
+    colunas = ["tipo", "nota", "membros", "popularidade"]
+    df = df.dropna(subset=colunas)
+
+    # Converte colunas numéricas para float, ignorando strings inválidas (como "Unknown")
+    df["nota"] = pd.to_numeric(df["nota"], errors="coerce")
+    df["membros"] = pd.to_numeric(df["membros"], errors="coerce")
+    df["popularidade"] = pd.to_numeric(df["popularidade"], errors="coerce")
+
+    # Remove valores não numéricos que viraram NaN
+    df = df.dropna(subset=["nota", "membros", "popularidade"])
+
+    # Agrupamento e média
     agrupado = df.groupby("tipo").agg({
         "nota": "mean",
         "membros": "mean",
         "popularidade": "mean"
     }).reset_index()
+
     return agrupado.to_dict(orient="records")
+
 
 @app.get("/animes/tabela")
 def tabela():

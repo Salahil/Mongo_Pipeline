@@ -51,7 +51,7 @@ export class ScoreVsPopularidadeComponent implements OnInit {
     title: { text: 'Popularidade' }
   };
   scatterTitle: ApexTitleSubtitle = {
-    text: '⚪ Gráfico de Dispersão ● Nota x Popularidade'
+    text: 'Gráfico de Dispersão - Nota x Popularidade'
   };
   scatterTooltip: ApexTooltip = {
     custom: ({ series, seriesIndex, dataPointIndex, w }) => {
@@ -82,7 +82,7 @@ export class ScoreVsPopularidadeComponent implements OnInit {
     title: { text: 'Nota' }
   };
   bubbleTitle: ApexTitleSubtitle = {
-    text: '📍 Bubble Chart ● Membros como tamanho da bolha'
+    text: 'Bubble Chart - Membros como tamanho da bolha'
   };
   bubbleTooltip: ApexTooltip = {
     custom: ({ series, seriesIndex, dataPointIndex, w }) => {
